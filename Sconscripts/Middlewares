@@ -1,0 +1,53 @@
+# for module compiling
+import os
+Import('RTT_ROOT')
+from building import *
+
+cwd = GetCurrentDir()
+objs = []
+list = os.listdir(cwd)
+
+for d in list:
+    path = os.path.join(cwd, d)
+    if os.path.isfile(os.path.join(path, 'SConscript')):
+        objs = objs + SConscript(os.path.join(d, 'SConscript'))
+
+Return('objs')
+"""
+import os, sys
+import rtconfig
+from building import *
+
+cwd     = GetCurrentDir()
+CPPPATH = [cwd + '/TF']
+#LIBPATH = [cwd + '/ST/AI/Lib']
+#lib_file_path = os.listdir(LIBPATH[0])
+# split filenames without suffix, only stem
+#lib_files = list()
+# lib_files = 
+# ['libNetworkRuntime520_CM4_GCC_PIC', 'NetworkRuntime520_CM4_IAR', 'NetworkRuntime520_CM4_Keil']
+#for i in range(len(lib_file_path)):
+#    stem = os.path.splitext(lib_file_path[i])[0]
+#    lib_files.append(stem)
+    
+# cross_tool provides the cross compiler
+# EXEC_PATH is the compiler execute path, for example, CodeSourcery, Keil MDK, IAR
+
+for item in lib_files:
+    if "GCC" in item and rtconfig.CROSS_TOOL == 'gcc':
+        # libNetworkRuntime520_CM7_GCC_PIC --> NetworkRuntime520_CM7_GCC_PIC
+        LIBS = [item[3:]]
+    elif "Keil" in item and rtconfig.CROSS_TOOL == 'keil':
+        LIBS = [item]
+    elif "IAR" in item and rtconfig.CROSS_TOOL == 'iar':
+        LIBS = [item]
+
+
+src     = []
+
+#group = DefineGroup('Middlewares', src, depend = [''], CPPPATH = CPPPATH, LIBS = LIBS, LIBPATH = LIBPATH)
+group = DefineGroup('Middlewares', src, depend = [''], CPPPATH = CPPPATH)
+
+Return('group')
+
+"""

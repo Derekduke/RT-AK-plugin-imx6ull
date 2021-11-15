@@ -1,0 +1,1 @@
+#define RT_AI_NETWORK_MODEL_NAME    "network"

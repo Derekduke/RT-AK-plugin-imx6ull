@@ -117,10 +117,11 @@ python aitools.py --project="D:\Code\Project\imx6ullrtak\imx6ull" --model="./Mod
 - [ ] 模型量化
 
 - [ ] 判断模型是否支持
-- [ ] 判断 `CPU` 是否支持
+- [ ] 判断 `CPU` 是否支持，目前是写死为imx6ull
 - [x] 在 `stm_out` 下生成后端推理框架和存放 `c-model` 的文件夹
-- [ ] 将模型转换成 `c-model`，保存在 `<stm_out>/TFLite` 路径下
+- [x] 将模型转换成 `c-model`，保存在 `<stm_out>/TFLite` 路径下
 - [x] 生成 `rt_ai_<model_name>_model.h` 文件，保存在 `project/applications` 
 - [x] 生成 `rt_ai_<model_name>_model.c` 文件，保存在 `project/applications` 
 - [x] 把 `stm_out` 内的两个关键文件夹加载到 `project` 下
 - [x] 判断是否删除 `stm_out`
+- [ ] 解析模型的输入输出维度
